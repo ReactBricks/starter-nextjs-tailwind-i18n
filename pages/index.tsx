@@ -10,9 +10,9 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 
 import config from '../react-bricks/config'
-import Layout from '../components/layout'
-import ErrorNoKeys from '../components/errorNoKeys'
-import ErrorNoHomePage from '../components/errorNoHomePage'
+import Layout from '../components/layoutt'
+import ErrorNoKeys from '../components/errorNoKeyss'
+import ErrorNoHomePage from '../components/errorNoHomePagee'
 
 interface HomeProps {
   page: types.Page,
@@ -51,7 +51,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const page = await fetchPage('home', config.apiKey, context.locale)
     return { props: { page } }
   } catch (error) {
-    console.log({error})
     return { props: { error: 'NOPAGE' } }
   }
 }
