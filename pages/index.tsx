@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const page = await fetchPage('home', config.apiKey, context.locale)
     return { props: { page } }
-  } catch (error) {
+  } catch {
     return { props: { error: 'NOPAGE' } }
   }
 }
