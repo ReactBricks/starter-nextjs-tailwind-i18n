@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { props: { error: 'NOKEYS' } }
   }
   const { slug } = context.params
-  const page = await fetchPage(slug.toString(), config.apiKey)
+  const page = await fetchPage(slug.toString(), config.apiKey, context.locale)
   return { props: { page } }
 }
 
@@ -50,9 +50,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allPages = await fetchPages(config.apiKey)
 
-  const paths = allPages.map((page) => ({
-    params: { slug: page.slug },
-  }))
+  const paths = allPages
+    .map((page) =>
+      page.translations.map((translation) => ({
+        params: { slug: page.slug },
+        locale: translation,
+      }))
+    )
+    .flat()
+  
+    console.log(paths)
 
   return { paths, fallback: false }
 }

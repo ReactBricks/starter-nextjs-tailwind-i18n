@@ -43,14 +43,15 @@ const Home: React.FC<HomeProps> = ({ page, error }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   if (!config.apiKey) {
     return { props: { error: 'NOKEYS' } }
   }
   try {
-    const page = await fetchPage('home', config.apiKey)
+    const page = await fetchPage('home', config.apiKey, context.locale)
     return { props: { page } }
-  } catch {
+  } catch (error) {
+    console.log({error})
     return { props: { error: 'NOPAGE' } }
   }
 }
