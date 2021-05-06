@@ -28,9 +28,6 @@ const Header: React.FC = () => (
             <Link href="/" locale="it">
               <a className="text-gray-500 hover:text-pink-700">IT</a>
             </Link>
-            <Link href="/" locale="es">
-              <a className="text-gray-500 hover:text-pink-700 pr-6">ES</a>
-            </Link>
           </div>
           <Link href="/admin">
             <a className="py-2 px-5 rounded text-white font-medium bg-cyan-500 hover:bg-cyan-600 hover:shadow-lg transition duration-200">
